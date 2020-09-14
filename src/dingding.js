@@ -1,16 +1,18 @@
+const moment = require('moment');
 const webhook = require('./webhook');
 
-const baseUrl = process.env.WEBHOOK_URL;
+const baseUrl = process.env.WEBHOOK_DINGDING;
 
 /**
- * 发送数据到企业微信
+ * 发送数据到钉钉
  * @param {string} markdownContent 发送的数据
  */
 function sendMsg(markdownContent) {
   const markdown = {
     msgtype: 'markdown',
     markdown: {
-      content: markdownContent,
+      title: `${moment().format('YYYY-MM-DD')}日 worklog`,
+      text: markdownContent,
     },
   };
 
