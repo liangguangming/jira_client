@@ -29,11 +29,12 @@ function setLink(key, str) {
 
 function launch() {
   const baseTime = moment().format('YYYY-MM-DD');
+  const extendsJql = process.env.SEARCH_EXTENDJQL || '';
   const searchOptions = {
     maxResults: 1000,
-    jql: `worklogDate >= ${moment(baseTime).subtract(RANGE_NUM, TIME_RANGE).format('YYYY-MM-DD')} and worklogDate < ${moment().add(1, 'd').format('YYYY-MM-DD')}`,
+    jql: `worklogDate >= ${moment(baseTime).subtract(RANGE_NUM, TIME_RANGE).format('YYYY-MM-DD')} and worklogDate < ${moment().add(1, 'd').format('YYYY-MM-DD')} ${extendsJql}`,
     startAt: 0,
-    fields: 'project,issuetype,resolution,summary,priority,status,parent,issuelinks,worklog,customfield_10008,customfield_10009,issue,customfield_10014,customfield_10030',
+    fields: process.env.SEARCH_FIELDS,
   };
 
   jiraClient.search(searchOptions).then((res) => {
