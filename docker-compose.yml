@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  jira_worklog:
+    image: registry.cn-shenzhen.aliyuncs.com/nradio_tool/jira_worklog:latest
+    restart: always
+    environment:
+      RANGE: d
+      RANGE_NUM: 0
+      TOKEN: Z21saWFuZ0BucmFkaW93aWZpLmNvbTpOTmpLN2ZhZ3ptc2NpY3NEQUxUREVGNUI=
+      BASE_URL: https://nradio.atlassian.net
+      WEBHOOK_URL: https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=17eefbad-9703-4d51-9e14-ebeaaf38097a
+      WEBHOOK_DINGDING: https://oapi.dingtalk.com/robot/send?access_token=ccf689428b93bb02f8baf5ede95f592fa6a694eeb2bd7d10a49bc0dd2ed257d4
+      CRON: 00 00 21 * * *
+      # 扩展搜索条件
+      SEARCH_EXTENDJQL: 
+      # 搜索包含的fields
+      SEARCH_FIELDS: project,issuetype,resolution,summary,priority,status,parent,issuelinks,worklog,customfield_10008,customfield_10009,issue,customfield_10014,customfield_10030
