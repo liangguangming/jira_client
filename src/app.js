@@ -105,6 +105,7 @@ function launch() {
 }
 
 const { CronJob } = cron;
+console.log('launch success');
 const job = new CronJob(process.env.CRON || '00 00 21 * * *', (() => {
   launch();
 }), null, true, 'Asia/Hong_Kong');
