@@ -1,4 +1,4 @@
-# nradio_cloud_jira_client
+# jira_client
 获取每天jira的worklog
 ## RANGE 获取worklog的范围
 - d 天
